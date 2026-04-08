@@ -55,7 +55,7 @@ rm example.txt          # 파일 삭제
 cd ..                   # 상위 디렉토리 이동
 rmdir test-dir          # 빈 디렉토리 삭제
 
----
+```
 
 > **참고 자료**  
 > - Linux Filesystem Hierarchy Standard (FHS)  
