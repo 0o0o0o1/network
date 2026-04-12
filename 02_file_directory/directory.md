@@ -130,11 +130,15 @@ rmdir [디렉터리명]
 
 ```bash
 $ ls -al
+drwxr-xr-x 1 user user 0 Apr 12 01_shell
+drwxr-xr-x 1 user user 0 Apr 12 02_file_directory
 drwxr-xr-x 1 user user 0 Apr 12 dir1
 
 $ rmdir dir1
 
 $ ls -al
+drwxr-xr-x 1 user user 0 Apr 12 01_shell
+drwxr-xr-x 1 user user 0 Apr 12 02_file_directory
 # dir1 삭제됨
 ```
 
