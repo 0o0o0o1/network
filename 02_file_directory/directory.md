@@ -72,14 +72,6 @@ ls [옵션] [경로]
 - 파일 및 디렉터리 목록 출력
 - 경로를 생략하면 현재 디렉터리를 기준으로 동작
 
-### 주요 옵션
-
-```bash
-ls -a   # 숨김 파일 포함
-ls -l   # 상세 정보 출력
-ls -al  # 숨김 파일 + 상세 정보
-```
-
 ### 실행 예시
 
 ```bash
@@ -99,7 +91,33 @@ drwxr-xr-x 1 CKIRUser 197121 0 Apr 12 16:14 02_file_directory
 
 ---
 
-## 4. 디렉터리 삭제 (rmdir)
+## 4. 디렉터리 생성 (mkdir)
+
+```bash
+mkdir [디렉터리명]
+```
+
+- `mkdir` (make directory)
+- 새로운 디렉터리를 생성
+
+### 실행 예시
+
+```bash
+$ ls -al
+drwxr-xr-x 1 user user 0 Apr 12 01_shell
+drwxr-xr-x 1 user user 0 Apr 12 02_file_directory
+
+$ mkdir dir1
+
+$ ls -al
+drwxr-xr-x 1 user user 0 Apr 12 01_shell
+drwxr-xr-x 1 user user 0 Apr 12 02_file_directory
+drwxr-xr-x 1 user user 0 Apr 12 dir1
+```
+
+---
+
+## 5. 디렉터리 삭제 (rmdir)
 
 ```bash
 rmdir [디렉터리명]
@@ -122,8 +140,9 @@ $ ls -al
 
 ---
 
-## 5. 핵심 정리
+## 6. 핵심 정리
 - pwd: 현재 디렉터리 경로 확인
 - cd: 디렉터리 이동 (상대/절대 경로)
 - ls: 디렉터리 목록 확인
+- mkdir: 디렉터리 생성
 - rmdir: 빈 디렉터리 삭제
