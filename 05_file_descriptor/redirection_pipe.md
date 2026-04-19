@@ -68,71 +68,92 @@ $ ps -ef | grep bash | wc -l
 
 ---
 
-## 3. 리다이렉션 (Redirection)
+## 리다이렉션 (Redirection)
 
-리다이렉션은 명령어의 입력이나 출력을 파일로 변경하는 기능이다.
+리다이렉션(Redirection)은 입력과 출력의 방향을 재지정하는 기능이다.  
+파이프와 마찬가지로 명령어가 아니라 셸에서 제공하는 기능이며,  
+`<`, `>`, `<<`, `>>` 기호를 사용한다.
 
----
-
-### 기본 종류
-
-| 기호 | 설명 |
-|------|------|
-| > | 출력 덮어쓰기 |
-| >> | 출력 이어쓰기 |
-| < | 입력 받기 |
-| 2> | 에러 출력 리다이렉션 |
+- `<`, `<<` : 입력 방향 재지정  
+- `>`, `>>` : 출력 방향 재지정  
 
 ---
 
-## 4. 리다이렉션 실습
+### 기본 동작
 
-### 1. 출력 결과 파일로 저장
+#### 출력 리다이렉션 (덮어쓰기)
 
 ```bash
-$ ls > result.txt
+$ echo "hello redirection" > redirection.txt
 ```
-
-- `ls` 결과를 `result.txt`에 저장  
-- 기존 내용은 덮어쓰기
-
----
-
-### 2. 출력 결과 이어쓰기
 
 ```bash
-$ ls >> result.txt
+$ cat redirection.txt
+hello redirection
 ```
 
-- 기존 파일 뒤에 내용 추가
+- `>` : 기존 내용을 덮어쓰고 새로 작성
 
 ---
 
-### 3. 입력 리다이렉션
+#### 출력 리다이렉션 (이어쓰기)
 
 ```bash
-$ wc -l < result.txt
+$ echo "hello redirection2" >> redirection.txt
 ```
-
-- `result.txt` 내용을 입력으로 받아 줄 수 계산
-
----
-
-### 4. 에러 출력 저장
 
 ```bash
-$ ls invalid_file 2> error.txt
+$ cat redirection.txt
+hello redirection
+hello redirection2
 ```
 
-- 존재하지 않는 파일 접근 시 에러 발생  
-- 에러 메시지를 `error.txt`에 저장
+- `>>` : 기존 내용 뒤에 추가
 
 ---
 
-## 5. 핵심 정리
+#### 입력 리다이렉션
 
-- `|`: 출력 → 입력 연결
-- `>`: 출력 저장
-- `>>`: 출력 추가
-- `<`: 입력 전달
-- `2>`: 에러 출력 저장
+```bash
+$ cat < redirection.txt
+```
+
+```bash
+hello redirection
+hello redirection2
+```
+
+- `<` : 파일 내용을 명령어의 입력으로 전달
+
+---
+
+## 특수한 리다이렉션
+
+### 표준 에러 리다이렉션
+
+```bash
+[A] 2> [B]
+```
+
+- A의 표준 에러(stderr, fd 2)를 B로 출력
+
+---
+
+### 표준 에러를 표준 출력으로
+
+```bash
+[A] 2>&1
+```
+
+- 표준 에러를 표준 출력(stdout, fd 1)으로 합침
+
+---
+
+### Here Document
+
+```bash
+[A] > [B] << [C]
+```
+
+- 문자열 C가 입력될 때까지 내용을 입력으로 전달  
+- C는 결과에 포함되지 않음
