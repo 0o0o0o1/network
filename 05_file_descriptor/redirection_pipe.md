@@ -157,3 +157,10 @@ hello redirection2
 
 - 문자열 C가 입력될 때까지 내용을 입력으로 전달  
 - C는 결과에 포함되지 않음
+- ### Here Document (참고)
+
+```bash
+cat << EOF
+hello
+world
+EOF
